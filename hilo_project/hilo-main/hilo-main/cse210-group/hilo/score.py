@@ -4,6 +4,43 @@ from card import Card, Score
 # There is Zach's code in the bottom
 Card = Card
 
+def main():
+    gamePlay = True
+    score = Score()
+
+    while (gamePlay):
+        cardA = Card()
+        cardB = Card()
+        print("")
+        cardA.firstDisplay()
+        guess = input("Higher or lower? [h/l] ")
+        cardB.secondDisplay()
+        
+        if (guess == "h"):
+            if(cardA.value > cardB.value):
+               score.subtract(75)
+            elif(cardA.value < cardB.value):
+               score.add(100)
+            else:
+               score.add(0)
+        
+        elif (guess == "l"):
+            if(cardA.value < cardB.value):
+                score.subtract(75)
+            elif(cardA.value > cardB.value):
+               score.add(100)
+            else:
+               score.add(0)
+
+
+        score.display()
+
+        again = input("Play again? [y/n] ")
+
+        if (again == "n"):
+            gamePlay = False
+
+
 class score:
     """ This will calculate score.
     Attributes:
@@ -89,49 +126,9 @@ class score:
         if not self.is_playing:
             return 
         new_round = input("Do you want to play again? [y/n] ")
-        self.is_playing = (new_round == "y")
-
-def main():
-    gamePlay = True
-    score = Score()
-
-    while (gamePlay):
-        cardA = Card()
-        cardB = Card()
-        print("")
-        cardA.firstDisplay()
-        guess = input("Higher or lower? [h/l] ")
-        cardB.secondDisplay()
-        
-        if (guess == "h"):
-            if(cardA.value > cardB.value):
-               score.subtract(75)
-            elif(cardA.value < cardB.value):
-               score.add(100)
-            else:
-               score.add(0)
-        
-        elif (guess == "l"):
-            if(cardA.value < cardB.value):
-                score.subtract(75)
-            elif(cardA.value > cardB.value):
-               score.add(100)
-            else:
-               score.add(0)
-
-
-        score.display()
-
-        again = input("Play again? [y/n] ")
-
-        if (again == "n"):
-            gamePlay = False
-  
+        self.is_playing = (new_round == "y")  
           
         
-
-
-
 
 if __name__ == "__main__":
     main()
